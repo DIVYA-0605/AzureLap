@@ -25,7 +25,7 @@ const Sidebar = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:3000/work-items?searchTerm=${searchTerm}&page=${page}&perPage=50`
+        `https://azurelap.netlify.app/.netlify/functions/server/work-items?searchTerm=${searchTerm}&page=${page}&perPage=50`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch work items");
@@ -73,7 +73,7 @@ const Sidebar = () => {
   const fetchSelfLinkData = async (workItemId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/work-items/fetch-self/${workItemId}`
+        `https://azurelap.netlify.app/.netlify/functions/server/work-items/fetch-self/${workItemId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data from self link");
@@ -164,7 +164,7 @@ const handleWorkItemClick = async (item) => {
   const fetchWorkItemDetails = async (workItemId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/work-items/${workItemId}`
+        `https://azurelap.netlify.app/.netlify/functions/server/work-items/${workItemId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch work item details");
@@ -195,7 +195,7 @@ const handleWorkItemClick = async (item) => {
     const fetchAndUpdateSearchedWorkItem = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/work-items/${searchedWorkItem.id}`
+          `https://azurelap.netlify.app/.netlify/functions/server/${searchedWorkItem.id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch work item details");
@@ -231,7 +231,7 @@ const handleWorkItemClick = async (item) => {
         storedWorkItems.map(async (item) => {
           try {
             const response = await fetch(
-              `http://localhost:3000/work-items/${item.id}`
+              `https://azurelap.netlify.app/.netlify/functions/server/${item.id}`
             );
             if (!response.ok) {
               console.warn(`Failed to fetch details for work item ${item.id}`);
